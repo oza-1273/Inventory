@@ -23,7 +23,7 @@
   <!-- Your custom JavaScript -->
   <script>
     function fetchProducts(searchValue) {
-      fetch('https://script.google.com/macros/s/AKfycbxwqtj6SvPrbZ-EwLQkeZ6U-3GxXuvPAJWgJJJPttOqBj73YHxt2RGjJhriATBEeLy_/exec?q=' + searchValue)
+      fetch('https://script.google.com/macros/s/AKfycbxlFVXPn7RiaF3u8GyGpHE4J2RhjfhzrKLJumfJikhtMgR0drfNVwwrhhKVUdOXsQsT/exec' + searchValue)
         .then(response => response.json())
         .then(data => {
           displayProducts(data);
