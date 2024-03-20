@@ -11,7 +11,10 @@
 <body>
   <div class="container">
     <h1 class="mt-5">Product Search</h1>
-    <input type="text" id="searchInput" class="form-control mt-3" placeholder="Search for a product...">
+    <div class="input-group mt-3">
+      <input type="text" id="searchInput" class="form-control" placeholder="Search for a product...">
+      <button class="btn btn-primary" id="searchButton">Search</button>
+    </div>
     <ul id="searchResults" class="list-group mt-3"></ul>
   </div>
 
@@ -19,8 +22,8 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.4.0/dist/js/bootstrap.bundle.min.js"></script>
   <!-- Your custom JavaScript -->
   <script>
-    function fetchProducts() {
-      fetch('https://script.google.com/macros/s/AKfycbyVldVQHhOSYzaox6CWASdgrIboNlSNMyQCFBoLlun4PVOsX2KIyQQWoEziQXJXARC9/exec')
+    function fetchProducts(searchValue) {
+      fetch('https://script.google.com/macros/s/AKfycbxwqtj6SvPrbZ-EwLQkeZ6U-3GxXuvPAJWgJJJPttOqBj73YHxt2RGjJhriATBEeLy_/exec?q=' + searchValue)
         .then(response => response.json())
         .then(data => {
           displayProducts(data);
@@ -38,7 +41,13 @@
       });
     }
 
-    fetchProducts();
+    document.getElementById('searchButton').addEventListener('click', function() {
+      var searchValue = document.getElementById('searchInput').value;
+      fetchProducts(searchValue);
+    });
+
+    // Fetch products on page load
+    fetchProducts('');
   </script>
 </body>
 </html>
