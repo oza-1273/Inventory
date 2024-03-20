@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Search</title>
+  <!-- Include Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.4.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <h1 class="mt-5">Product Search</h1>
+    <input type="text" id="searchInput" class="form-control mt-3" placeholder="Search for a product...">
+    <ul id="searchResults" class="list-group mt-3"></ul>
+  </div>
+
+  <!-- Include Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.4.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Your custom JavaScript -->
+  <script>
+    function fetchProducts() {
+      fetch('https://script.google.com/macros/s/AKfycbyVldVQHhOSYzaox6CWASdgrIboNlSNMyQCFBoLlun4PVOsX2KIyQQWoEziQXJXARC9/exec')
+        .then(response => response.json())
+        .then(data => {
+          displayProducts(data);
+        });
+    }
+
+    function displayProducts(products) {
+      var searchResults = document.getElementById('searchResults');
+      searchResults.innerHTML = '';
+      products.forEach(product => {
+        var li = document.createElement('li');
+        li.className = 'list-group-item';
+        li.textContent = product.name + ' - $' + product.price;
+        searchResults.appendChild(li);
+      });
+    }
+
+    fetchProducts();
+  </script>
+</body>
+</html>
