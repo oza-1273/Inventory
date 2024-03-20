@@ -23,12 +23,14 @@
     <!-- Your custom JavaScript -->
     <script>
       function fetchProducts(searchValue) {
-        fetch('https://crossorigin.me/https://script.google.com/macros/s/AKfycbwHCIrlNs-7Y2qh71z3wnGoZLpSWPTPm8BrWXNNWxJJBd8KwV3lxHvOFt3jLYIuL7XI/exec' + searchValue)
-          .then(response => response.json())
-          .then(data => {
-            displayProducts(data);
-    });
+        fetch('https://script.google.com/macros/s/AKfycbwHCIrlNs-7Y2qh71z3wnGoZLpSWPTPm8BrWXNNWxJJBd8KwV3lxHvOFt3jLYIuL7XI/exec?q=' + searchValue, {
+          mode: 'no-cors'
+        })
+        .then(response => {
+          // Handle the response (this will be an opaque response)
+        });
 }
+
 
 
       function displayProducts(products) {
